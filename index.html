@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Årsnes Gård — Alkoholfri eplecider fra Kinsarvik i Hardanger</title>
+<meta name="description" content="Årsnes Gård i Kinsarvik presser alkoholfri eplecider av egne epler fra Hardanger. Bestill flasker til henting på gården.">
+<meta property="og:title" content="Årsnes Gård — Alkoholfri eplecider fra Hardanger">
+<meta property="og:description" content="Alkoholfri eplecider presset av egne epler i Kinsarvik. Bestill til henting på gården.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aarsnesgard.no/">
+<link rel="canonical" href="https://aarsnesgard.no/">
+<meta name="theme-color" content="#f5f0e8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8D%8E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --cream: #f5f0e8;
+    --warm-brown: #5c3d2e;
+    --moss: #6b7c4e;
+    --moss-light: #8fa462;
+    --earth: #a0845c;
+    --bark: #3e2a1a;
+    --sky: #c5d5c0;
+    --accent: #d4a843;
+    --stone: #8a8075;
+    --apple: #b04a3a;
+    --juice: #e0a63c;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--bark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+::selection { background: var(--accent); color: var(--bark); }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 3px solid var(--moss);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--warm-brown);
+    color: var(--cream);
+    padding: 0.8rem 1.4rem;
+    z-index: 200;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* --- GRAIN OVERLAY --- */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- NAV --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(245, 240, 232, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(94, 61, 46, 0.08);
+    transition: padding 0.4s ease, box-shadow 0.4s ease;
+}
+
+nav.scrolled {
+    padding: 0.8rem 3rem;
+    box-shadow: 0 4px 30px rgba(62, 42, 26, 0.06);
+}
+
+.nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--warm-brown);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.nav-logo span { color: var(--moss); }
+
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--stone);
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--moss);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--moss); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+    background: var(--moss);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+}
+.nav-cta::after { display: none; }
+.nav-cta:hover { background: var(--moss-light); transform: translateY(-1px); color: var(--cream) !important; }
+
+/* --- HERO --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    background: linear-gradient(180deg, #e8e0d4 0%, var(--cream) 55%, var(--sky) 100%);
+}
+
+.hero-mountains {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mountain { position: absolute; bottom: 0; border-radius: 50% 50% 0 0; }
+.mountain-1 { width: 60%; height: 250px; left: -10%; background: linear-gradient(180deg, #9aab82, #7d9460); opacity: 0.3; }
+.mountain-2 { width: 50%; height: 200px; right: -5%; background: linear-gradient(180deg, #8a9b72, #6b8550); opacity: 0.25; }
+.mountain-3 { width: 80%; height: 150px; left: 10%; background: linear-gradient(180deg, #a8b892, #8fa87a); opacity: 0.2; }
+
+.hero-content { position: relative; z-index: 3; }
+
+.hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    color: var(--warm-brown);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.03em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.hero h1 em { font-style: italic; color: var(--moss); }
+
+.hero-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+    color: var(--earth);
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+}
+
+.hero-desc {
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+    color: var(--stone);
+    font-weight: 300;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: background 0.3s, color 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+.btn-primary { background: var(--warm-brown); color: var(--cream); }
+.btn-primary:hover { background: var(--bark); transform: translateY(-2px); }
+
+.btn-ghost { border-color: rgba(94, 61, 46, 0.25); color: var(--warm-brown); background: transparent; }
+.btn-ghost:hover { border-color: var(--moss); color: var(--moss); transform: translateY(-2px); }
+
+/* --- PASTURE / ORCHARD --- */
+.pasture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46vh;
+    min-height: 260px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.grass-blade {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--moss-light), var(--moss));
+    border-radius: 2px 2px 0 0;
+    transform-origin: bottom center;
+}
+
+.goat {
+    position: absolute;
+    font-size: 2.2rem;
+    cursor: pointer;
+    user-select: none;
+    z-index: 5;
+    filter: drop-shadow(0 3px 4px rgba(62, 42, 26, 0.18));
+    transition: left 3s ease;
+}
+
+.goat:hover { filter: drop-shadow(0 5px 8px rgba(62, 42, 26, 0.3)); }
+.goat.jumping { animation: goatJump 0.5s ease; }
+
+@keyframes goatJump {
+    0%, 100% { transform: translateY(0) var(--flip, scaleX(1)); }
+    50% { transform: translateY(-24px) var(--flip, scaleX(1)); }
+}
+
+.speech-bubble {
+    position: absolute;
+    background: var(--cream);
+    color: var(--warm-brown);
+    padding: 0.4rem 0.85rem;
+    border-radius: 14px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 8;
+    box-shadow: 0 4px 14px rgba(62, 42, 26, 0.15);
+    animation: bubblePop 1.6s ease forwards;
+    transform: translateX(-50%);
+}
+
+@keyframes bubblePop {
+    0% { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.85); }
+    18% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    78% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-18px) scale(0.95); }
+}
+
+/* Apple tree */
+.tree { position: absolute; bottom: 0; z-index: 3; pointer-events: none; }
+.tree-trunk {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 90px;
+    background: linear-gradient(90deg, #6b4a2f, #8a6340 55%, #5c3d2e);
+    border-radius: 4px;
+}
+.tree-canopy {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 118px;
+    background: radial-gradient(circle at 35% 30%, #7f9a5c, #5f7a44);
+    border-radius: 52% 48% 46% 54%;
+    box-shadow: 0 6px 18px rgba(62, 42, 26, 0.12);
+}
+.tree-canopy::before {
+    content: '';
+    position: absolute;
+    width: 78px; height: 66px;
+    background: radial-gradient(circle at 40% 35%, #8ea865, #6b8a4d);
+    border-radius: 50%;
+    top: -22px; left: 14px;
+}
+.tree-canopy::after {
+    content: '';
+    position: absolute;
+    width: 62px; height: 54px;
+    background: radial-gradient(circle at 40% 35%, #86a05e, #648146);
+    border-radius: 50%;
+    top: -12px; right: 8px;
+}
+
+.apple {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50% 50% 48% 48%;
+    background: radial-gradient(circle at 32% 28%, #d4695a, var(--apple) 60%, #8d3a2d);
+    cursor: pointer;
+    z-index: 6;
+    box-shadow: 0 2px 5px rgba(62, 42, 26, 0.25);
+    pointer-events: auto;
+}
+
+.apple::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: 50%;
+    width: 2px; height: 6px;
+    background: #5c3d2e;
+    transform: translateX(-50%) rotate(12deg);
+    border-radius: 1px;
+}
+
+.apple::after {
+    content: '';
+    position: absolute;
+    top: -4px; left: 58%;
+    width: 8px; height: 5px;
+    background: var(--moss-light);
+    border-radius: 0 100% 0 100%;
+}
+
+.apple.falling { animation: appleFall var(--fall-time, 2.6s) cubic-bezier(0.4, 0, 0.8, 1) forwards; }
+
+@keyframes appleFall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(var(--fall-dist, 200px)) rotate(320deg); }
+}
+
+.apple.picked { animation: applePick 0.45s ease forwards; pointer-events: none; }
+
+@keyframes applePick {
+    0% { transform: scale(1); opacity: 1; }
+    45% { transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(0.2) translateY(-30px); opacity: 0; }
+}
+
+/* Harvest counter */
+.harvest {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: rgba(245, 240, 232, 0.94);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(94, 61, 46, 0.12);
+    border-radius: 100px;
+    padding: 0.55rem 1.1rem 0.55rem 0.7rem;
+    box-shadow: 0 6px 24px rgba(62, 42, 26, 0.12);
+    font-size: 0.82rem;
+    color: var(--warm-brown);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.harvest.show { opacity: 1; transform: translateY(0); }
+
+.bottle {
+    position: relative;
+    width: 20px;
+    height: 44px;
+    border: 2px solid var(--warm-brown);
+    border-radius: 3px 3px 7px 7px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.bottle::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    border: 2px solid var(--warm-brown);
+    border-bottom: none;
+    border-radius: 2px 2px 0 0;
+}
+.bottle-fill {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--juice), #c98f2a);
+    transition: height 0.5s cubic-bezier(0.3, 1.2, 0.6, 1);
+}
+
+.harvest-stats { line-height: 1.35; }
+.harvest-stats strong { font-weight: 600; font-size: 0.95rem; }
+.harvest-label { color: var(--stone); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.harvest-toast {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    z-index: 91;
+    background: var(--warm-brown);
+    color: var(--cream);
+    padding: 0.65rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    box-shadow: 0 6px 24px rgba(62, 42, 26, 0.25);
+    animation: toastIn 2.6s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes toastIn {
+    0% { opacity: 0; transform: translateY(12px); }
+    12% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    z-index: 7;
+    animation: bob 2.4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.65; }
+    50% { transform: translateX(-50%) translateY(7px); opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SECTIONS --- */
+section { padding: 7rem 3rem; }
+
+.section-inner { max-width: 1000px; margin: 0 auto; }
+
+.section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--warm-brown);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.lead {
+    font-size: 1.05rem;
+    color: var(--stone);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 620px;
+}
+
+/* --- OM GÅRDEN --- */
+.about { background: var(--cream); }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #c5b8a0, #9d8f70);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image .placeholder-note {
+    position: relative;
+    z-index: 2;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+}
+
+.about-image::before {
+    content: '🍎';
+    position: absolute;
+    font-size: 5rem;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.55;
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(62,42,26,0.28));
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    color: var(--stone);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+}
+
+.about-text p strong { color: var(--warm-brown); font-weight: 500; }
+
+.facts {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.fact-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--moss);
+    line-height: 1;
+}
+
+.fact-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 0.4rem;
+}
+
+/* --- CIDEREN --- */
+.cider {
+    background: var(--bark);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.cider .section-tag { color: var(--accent); }
+.cider .section-title { color: var(--cream); }
+.cider .lead { color: rgba(245, 240, 232, 0.72); }
+
+.bubble {
+    position: absolute;
+    bottom: -30px;
+    border-radius: 50%;
+    background: rgba(224, 166, 60, 0.16);
+    border: 1px solid rgba(224, 166, 60, 0.22);
+    pointer-events: none;
+    animation: rise linear infinite;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    12% { opacity: 1; }
+    88% { opacity: 1; }
+    100% { transform: translateY(-92vh) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+.variant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.variant-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2.2rem 1.8rem;
+    transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.variant-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(212, 168, 67, 0.4);
+}
+
+.variant-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+}
+
+.variant-apples {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.variant-card p {
+    color: rgba(245, 240, 232, 0.7);
+    font-weight: 300;
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+.cider-specs {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    z-index: 2;
+}
+
+.spec {
+    font-size: 0.9rem;
+    color: rgba(245, 240, 232, 0.75);
+    font-weight: 300;
+}
+.spec strong { display: block; color: var(--accent); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+/* --- PROSESS --- */
+.process { background: var(--cream); }
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding-top: 2.6rem;
+    border-top: 1px solid rgba(94, 61, 46, 0.14);
+}
+
+.step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    top: 0.9rem;
+    left: 0;
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+.step h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--warm-brown);
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+}
+
+.step p {
+    font-size: 0.95rem;
+    color: var(--stone);
+    font-weight: 300;
+    line-height: 1.75;
+}
+
+/* --- ØVRIGE PRODUKTER --- */
+.more { background: #ede6da; }
+
+.more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.more-card {
+    background: var(--cream);
+    border: 1px solid rgba(94, 61, 46, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.more-card:hover { transform: translateY(-5px); box-shadow: 0 12px 34px rgba(62, 42, 26, 0.08); }
+
+.more-emoji { font-size: 1.9rem; display: block; margin-bottom: 0.9rem; }
+
+.more-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--warm-brown);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+}
+
+.more-card p { font-size: 0.94rem; color: var(--stone); font-weight: 300; line-height: 1.7; }
+
+/* --- BESTILL --- */
+.order { background: var(--cream); }
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.order-info p {
+    font-size: 1.02rem;
+    color: var(--stone);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+}
+
+.order-info strong { color: var(--warm-brown); font-weight: 500; }
+
+.order-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.7rem;
+    color: var(--moss);
+    margin-bottom: 1.4rem;
+}
+
+.order-note {
+    font-size: 0.88rem;
+    color: var(--stone);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    font-weight: 300;
+}
+
+.order-form {
+    background: #fff;
+    border: 1px solid rgba(94, 61, 46, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(62, 42, 26, 0.06);
+}
+
+.form-field { margin-bottom: 1.35rem; }
+
+.form-field label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    color: var(--bark);
+    background: var(--cream);
+    border: 1px solid rgba(94, 61, 46, 0.15);
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--moss);
+    box-shadow: 0 0 0 3px rgba(107, 124, 78, 0.15);
+}
+
+.form-field textarea { resize: vertical; min-height: 80px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+.order-btn {
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--moss);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.order-btn:hover:not(:disabled) { background: var(--moss-light); transform: translateY(-2px); }
+.order-btn:disabled { background: var(--stone); cursor: wait; }
+
+.order-status {
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    font-size: 0.94rem;
+    display: none;
+}
+
+.order-status.ok {
+    display: block;
+    background: rgba(107, 124, 78, 0.12);
+    color: var(--moss);
+    border: 1px solid rgba(107, 124, 78, 0.3);
+}
+
+.order-status.feil {
+    display: block;
+    background: rgba(176, 74, 58, 0.08);
+    color: #9c3f31;
+    border: 1px solid rgba(176, 74, 58, 0.25);
+}
+
+/* --- KONTAKT --- */
+.contact { background: #ede6da; text-align: center; }
+
+.contact .lead { margin: 0 auto; }
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.contact-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.98rem; color: var(--warm-brown); }
+.contact-item .icon { font-size: 1.2rem; }
+.contact-item a { color: var(--warm-brown); text-decoration: none; border-bottom: 1px solid var(--moss); transition: color 0.3s; }
+.contact-item a:hover { color: var(--moss); }
+
+/* --- FOOTER --- */
+footer {
+    background: var(--bark);
+    color: rgba(245, 240, 232, 0.55);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+footer .footer-name { font-family: 'DM Serif Display', serif; color: var(--cream); font-size: 1.1rem; display: block; margin-bottom: 0.6rem; }
+footer a { color: rgba(245, 240, 232, 0.75); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.25); }
+
+/* --- REVEAL --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    section { padding: 5rem 1.5rem; }
+    nav, nav.scrolled { padding: 1rem 1.5rem; }
+    .nav-links li:not(.nav-cta-item) { display: none; }
+    .about-grid, .order-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-image { aspect-ratio: 16/10; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-info { flex-direction: column; align-items: center; gap: 1.2rem; }
+    .facts { gap: 1.8rem; }
+    .harvest { bottom: 1rem; right: 1rem; padding: 0.45rem 0.9rem 0.45rem 0.6rem; }
+    .harvest-toast { bottom: 4.8rem; right: 1rem; }
+    .tree-canopy { width: 112px; height: 90px; }
+    .goat { font-size: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .hero-eyebrow, .hero h1, .hero-tagline, .hero-desc, .hero-actions { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#hovedinnhold">Hopp til innhold</a>
+
+<nav id="navbar">
+    <a href="#" class="nav-logo">Årsnes <span>Gård</span></a>
+    <ul class="nav-links">
+        <li><a href="#gaarden">Gården</a></li>
+        <li><a href="#cideren">Cideren</a></li>
+        <li><a href="#prosess">Slik lages den</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li class="nav-cta-item"><a href="#bestill" class="nav-cta">Bestill</a></li>
+    </ul>
+</nav>
+
+<header class="hero" id="hovedinnhold">
+    <div class="hero-mountains" aria-hidden="true">
+        <div class="mountain mountain-1"></div>
+        <div class="mountain mountain-2"></div>
+        <div class="mountain mountain-3"></div>
+    </div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Kinsarvik i Hardanger</p>
+        <h1>Årsnes <em>Gård</em></h1>
+        <p class="hero-tagline">Alkoholfri eplecider, presset på gården</p>
+        <p class="hero-desc">
+            Vi dyrker epler i Hardanger og presser dem til alkoholfri cider —
+            uten tilsatt sukker, uten konsentrat. Gården har også en flokk melkegeiter
+            som passer på eplehagen, med varierende grad av suksess.
+        </p>
+        <div class="hero-actions">
+            <a href="#bestill" class="btn btn-primary">Bestill cider</a>
+            <a href="#gaarden" class="btn btn-ghost">Om gården</a>
+        </div>
+    </div>
+
+    <div class="pasture" id="pasture" aria-hidden="true"></div>
+    <p class="scroll-hint">Bla ned</p>
+</header>
+
+<section class="about" id="gaarden">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <!-- PLASSHOLDER: bytt ut med et ekte bilde av gården -->
+                <span class="placeholder-note">Bilde av gården<br>kommer</span>
+            </div>
+            <div class="about-text reveal">
+                <p class="section-tag">Om gården</p>
+                <h2 class="section-title">Epler, geiter og bratte bakker</h2>
+                <p>
+                    Årsnes Gård ligger i <strong>Kinsarvik i Hardanger</strong>, i en av landets
+                    eldste fruktbygder. Klimaet langs fjorden gir lange, kjølige modningsperioder,
+                    og det er nettopp det eplene trenger for å få syre og aroma.
+                </p>
+                <p>
+                    Vi driver i liten skala. Eplene plukkes for hånd, presses på gården,
+                    og går rett på flaske. <strong>Alt skjer innenfor gårdsgrensa</strong> —
+                    fra tre til ferdig produkt.
+                </p>
+                <p>
+                    Ved siden av frukten holder vi melkegeiter, dyrker grønnsaker til eget bruk,
+                    og tar oppdrag med traktor for naboer i bygda.
+                </p>
+                <div class="facts">
+                    <div>
+                        <!-- PLASSHOLDER: juster tallene -->
+                        <div class="fact-value">1987</div>
+                        <div class="fact-label">Drift siden</div>
+                    </div>
+                    <div>
+                        <div class="fact-value">6</div>
+                        <div class="fact-label">Eplesorter</div>
+                    </div>
+                    <div>
+                        <div class="fact-value">0 %</div>
+                        <div class="fact-label">Tilsatt sukker</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cider" id="cideren">
+    <div class="section-inner">
+        <p class="section-tag reveal">Produktet</p>
+        <h2 class="section-title reveal">Cideren</h2>
+        <p class="lead reveal">
+            Alkoholfri eplecider i tre varianter. Forskjellen ligger i eplesortene og
+            hvor lenge saften får stå — ikke i tilsetninger. Cideren er upasteurisert
+            filtrert og inneholder under 0,7 % alkohol.
+        </p>
+
+        <div class="variant-grid">
+            <!-- PLASSHOLDER: juster navn, eplesorter og smaksbeskrivelser -->
+            <article class="variant-card reveal">
+                <h3 class="variant-name">Tørr</h3>
+                <p class="variant-apples">Gravenstein</p>
+                <p>
+                    Frisk og syrlig, med tydelig eplesyre og lite restsødme.
+                    Passer til ost, spekemat og fet fisk.
+                </p>
+            </article>
+            <article class="variant-card reveal">
+                <h3 class="variant-name">Halvtørr</h3>
+                <p class="variant-apples">Aroma & Gravenstein</p>
+                <p>
+                    Balansert mellom syre og sødme. Den varianten folk flest
+                    kommer tilbake for, og den enkleste å drikke til hverdags.
+                </p>
+            </article>
+            <article class="variant-card reveal">
+                <h3 class="variant-name">Søt</h3>
+                <p class="variant-apples">Summerred & Discovery</p>
+                <p>
+                    Rund og fruktig, med mer av eplenes naturlige sødme.
+                    Populær hos barn, og god til dessert.
+                </p>
+            </article>
+        </div>
+
+        <div class="cider-specs reveal">
+            <div class="spec"><strong>Volum</strong>0,75 liter</div>
+            <div class="spec"><strong>Alkohol</strong>Under 0,7 % — alkoholfri</div>
+            <div class="spec"><strong>Innhold</strong>100 % eplesaft fra egne trær</div>
+            <div class="spec"><strong>Holdbarhet</strong>Kjølig og mørkt, drikkes innen 12 måneder</div>
+        </div>
+    </div>
+</section>
+
+<section class="process" id="prosess">
+    <div class="section-inner">
+        <p class="section-tag reveal">Fra tre til flaske</p>
+        <h2 class="section-title reveal">Slik lages cideren</h2>
+        <p class="lead reveal">
+            Fire steg, alle på gården. Hele runden tar rundt seks uker fra plukking til
+            ferdig flaske.
+        </p>
+        <div class="process-steps">
+            <div class="step reveal">
+                <h3>Plukking</h3>
+                <p>
+                    Eplene plukkes for hånd når de er modne, sort for sort.
+                    Nedfallsfrukt sorteres fra og går til geitene.
+                </p>
+            </div>
+            <div class="step reveal">
+                <h3>Pressing</h3>
+                <p>
+                    Eplene vaskes, kvernes og presses samme dag.
+                    Saften tappes rett fra pressa, uten konsentrat eller vann.
+                </p>
+            </div>
+            <div class="step reveal">
+                <h3>Klaring</h3>
+                <p>
+                    Saften får stå kjølig til grumset synker.
+                    Her utvikler smaken seg, og variantene skiller lag.
+                </p>
+            </div>
+            <div class="step reveal">
+                <h3>Tapping</h3>
+                <p>
+                    Cideren filtreres, tappes på flaske og merkes for hånd.
+                    Hver batch får sitt eget nummer.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="more" id="produkter">
+    <div class="section-inner">
+        <p class="section-tag reveal">Ellers på gården</p>
+        <h2 class="section-title reveal">Andre produkter og tjenester</h2>
+        <div class="more-grid">
+            <div class="more-card reveal">
+                <span class="more-emoji" aria-hidden="true">🍎</span>
+                <h3>Epler</h3>
+                <p>
+                    Gamle norske sorter i sesong — Gravenstein, Aroma og Summerred.
+                    Selges i kasser fra gården etter avtale.
+                </p>
+            </div>
+            <div class="more-card reveal">
+                <span class="more-emoji" aria-hidden="true">🐐</span>
+                <h3>Geitemelk og ost</h3>
+                <p>
+                    Melkegeiter av norsk landrase. Fersk melk og ost i begrensede
+                    mengder gjennom sesongen.
+                </p>
+            </div>
+            <div class="more-card reveal">
+                <span class="more-emoji" aria-hidden="true">🚜</span>
+                <h3>Traktortjenester</h3>
+                <p>
+                    Brøyting, pløying og transport for naboer og hytteeiere i området.
+                    Ta kontakt for pris og tilgjengelighet.
+                </p>
+            </div>
+            <div class="more-card reveal">
+                <span class="more-emoji" aria-hidden="true">🧺</span>
+                <h3>Besøk på gården</h3>
+                <p>
+                    Vi tar imot mindre grupper etter avtale. Omvisning i eplehagen,
+                    møte med geitene og smaksprøver av cideren.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="order" id="bestill">
+    <div class="section-inner">
+        <p class="section-tag reveal">Bestilling</p>
+        <h2 class="section-title reveal">Bestill cider</h2>
+        <div class="order-grid">
+            <div class="order-info reveal">
+                <p>
+                    Fyll ut skjemaet, så tar vi kontakt for å avtale
+                    <strong>henting på gården</strong>. Du får bekreftelse på telefon
+                    før noe er bindende.
+                </p>
+                <!-- PLASSHOLDER: sett riktig pris -->
+                <p class="order-price">kr 89,– per flaske (0,75 l)</p>
+                <p>
+                    Betaling med <strong>Vipps eller kontant ved henting</strong>.
+                    Ved større bestillinger avtaler vi pris direkte.
+                </p>
+                <p class="order-note">
+                    Cideren er alkoholfri og kan bestilles av alle.
+                    Ved henting på gården er vi ofte i fjøset — ring gjerne før du kommer.
+                </p>
+            </div>
+
+            <form class="order-form reveal" id="orderForm" novalidate>
+                <div class="form-field">
+                    <label for="of-navn">Navn</label>
+                    <input type="text" id="of-navn" name="navn" required autocomplete="name" placeholder="Ola Nordmann">
+                </div>
+                <div class="form-field">
+                    <label for="of-telefon">Telefon</label>
+                    <input type="tel" id="of-telefon" name="telefon" required autocomplete="tel" placeholder="900 00 000">
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="of-variant">Variant</label>
+                        <select id="of-variant" name="variant" required>
+                            <option value="Tørr">Tørr</option>
+                            <option value="Halvtørr" selected>Halvtørr</option>
+                            <option value="Søt">Søt</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="of-antall">Antall flasker</label>
+                        <input type="number" id="of-antall" name="antall" min="1" max="60" value="2" required inputmode="numeric">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="of-kommentar">Kommentar (valgfritt)</label>
+                    <textarea id="of-kommentar" name="kommentar" placeholder="Ønsket hentetidspunkt, blandet bestilling, spørsmål …"></textarea>
+                </div>
+                <div class="hp-field" aria-hidden="true">
+                    <label for="of-nettsted">Nettsted</label>
+                    <input type="text" id="of-nettsted" name="nettsted" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="order-btn" id="orderBtn">Send bestilling</button>
+                <div class="order-status" id="orderStatus" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="kontakt">
+    <div class="section-inner">
+        <p class="section-tag reveal">Kontakt</p>
+        <h2 class="section-title reveal">Ta kontakt</h2>
+        <p class="lead reveal">
+            Spørsmål om cideren, bestillinger eller besøk på gården?
+            Ring, send e-post, eller stikk innom etter avtale.
+        </p>
+        <!-- PLASSHOLDER: fyll inn ekte adresse, telefon og e-post -->
+        <div class="contact-info reveal">
+            <div class="contact-item">
+                <span class="icon" aria-hidden="true">📍</span>
+                <span>Kinsarvik, Ullensvang</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon" aria-hidden="true">📞</span>
+                <a href="tel:+4700000000">00 00 00 00</a>
+            </div>
+            <div class="contact-item">
+                <span class="icon" aria-hidden="true">✉️</span>
+                <a href="mailto:post@aarsnesgard.no">post@aarsnesgard.no</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <span class="footer-name">Årsnes Gård</span>
+    <!-- PLASSHOLDER: org.nr -->
+    <p>Kinsarvik, Ullensvang &middot; Org.nr. 000 000 000</p>
+    <p>&copy; <span id="year">2026</span> Årsnes Gård</p>
+</footer>
+
+<div class="harvest" id="harvest" aria-hidden="true">
+    <div class="bottle"><div class="bottle-fill" id="bottleFill"></div></div>
+    <div class="harvest-stats">
+        <div class="harvest-label">Epler plukket</div>
+        <strong id="appleCount">0</strong>
+        <span id="bottleText"></span>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* --- NAV --- */
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* --- SCROLL REVEAL --- */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        reveals.forEach(el => obs.observe(el));
+    } else {
+        reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ================================================================
+       EPLEHAGE: geiter, epletre og høsting
+       ================================================================ */
+    const pasture = document.getElementById('pasture');
+    const harvest = document.getElementById('harvest');
+    const appleCountEl = document.getElementById('appleCount');
+    const bottleFill = document.getElementById('bottleFill');
+    const bottleText = document.getElementById('bottleText');
+
+    const APPLES_PER_BOTTLE = 12;
+    let picked = 0;
+    let bottles = 0;
+
+    const goatNames = ['Greta', 'Bjørk', 'Frøya', 'Sølvi', 'Kåre', 'Trine'];
+    const goatLines = [
+        'Mæh!', 'Bæ!', '*tygger*', 'Er det eple?', 'Mer gress!',
+        '*hopper*', 'Hei!', 'God morgen!', '*ser på deg*',
+        'Klø meg bak øret', 'Nam!', '*breker fornøyd*',
+        'Har du mat?', 'Fint vær i dag', '*luter mot gjerdet*'
+    ];
+    const stealLines = ['Mitt eple!', 'Nam nam!', '*stjeler eplet*', 'Takk for maten!'];
+
+    function updateHarvest() {
+        appleCountEl.textContent = picked;
+        const inBottle = picked % APPLES_PER_BOTTLE;
+        bottleFill.style.height = (inBottle / APPLES_PER_BOTTLE * 100) + '%';
+        bottleText.textContent = bottles > 0
+            ? ' — ' + bottles + (bottles === 1 ? ' flaske' : ' flasker')
+            : '';
+        harvest.classList.add('show');
+    }
+
+    function toast(msg) {
+        const t = document.createElement('div');
+        t.className = 'harvest-toast';
+        t.textContent = msg;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 2600);
+    }
+
+    function bubbleAt(leftPx, bottomPx, text) {
+        const b = document.createElement('div');
+        b.className = 'speech-bubble';
+        b.textContent = text;
+        b.style.left = leftPx + 'px';
+        b.style.bottom = bottomPx + 'px';
+        pasture.appendChild(b);
+        setTimeout(() => b.remove(), 1700);
+    }
+
+    /* --- Gress --- */
+    const bladeCount = window.innerWidth < 700 ? 45 : 85;
+    for (let i = 0; i < bladeCount; i++) {
+        const g = document.createElement('div');
+        g.className = 'grass-blade';
+        g.style.left = Math.random() * 100 + '%';
+        g.style.height = (18 + Math.random() * 38) + 'px';
+        g.style.opacity = 0.35 + Math.random() * 0.6;
+        g.style.transform = 'rotate(' + (-14 + Math.random() * 28) + 'deg)';
+        pasture.appendChild(g);
+    }
+
+    /* --- Epletre --- */
+    const tree = document.createElement('div');
+    tree.className = 'tree';
+    tree.style.right = window.innerWidth < 700 ? '4%' : '9%';
+    tree.style.width = '150px';
+    tree.style.height = '210px';
+    tree.innerHTML = '<div class="tree-canopy"></div><div class="tree-trunk"></div>';
+    pasture.appendChild(tree);
+
+    /* --- Epler --- */
+    const groundApples = [];
+
+    function pickApple(apple) {
+        if (apple.dataset.gone) return;
+        apple.dataset.gone = '1';
+        apple.classList.add('picked');
+        const idx = groundApples.indexOf(apple);
+        if (idx > -1) groundApples.splice(idx, 1);
+        setTimeout(() => apple.remove(), 450);
+
+        picked++;
+        if (picked % APPLES_PER_BOTTLE === 0) {
+            bottles++;
+            toast('Nok epler til én flaske cider');
+        }
+        updateHarvest();
+    }
+
+    function spawnApple() {
+        if (document.hidden) return;
+        if (groundApples.length > 7) return;
+
+        const treeRect = tree.getBoundingClientRect();
+        const pastureRect = pasture.getBoundingClientRect();
+        if (!treeRect.width) return;
+
+        const apple = document.createElement('div');
+        apple.className = 'apple';
+
+        // Start inne i trekrona
+        const canopyLeft = treeRect.left - pastureRect.left + 30;
+        const startX = canopyLeft + Math.random() * 90;
+        const startBottom = pastureRect.height - (treeRect.top - pastureRect.top) - 100;
+
+        apple.style.left = startX + 'px';
+        apple.style.bottom = startBottom + 'px';
+
+        const fallDist = Math.max(40, startBottom - (8 + Math.random() * 26));
+        apple.style.setProperty('--fall-dist', fallDist + 'px');
+        apple.style.setProperty('--fall-time', (1.8 + Math.random() * 1.2) + 's');
+
+        apple.addEventListener('click', () => pickApple(apple));
+        pasture.appendChild(apple);
+
+        if (!reducedMotion) {
+            requestAnimationFrame(() => apple.classList.add('falling'));
+        } else {
+            apple.style.bottom = (startBottom - fallDist) + 'px';
+        }
+
+        groundApples.push(apple);
+
+        // Eplet råtner bort etter en stund om ingen plukker det
+        setTimeout(() => {
+            if (!apple.dataset.gone) {
+                apple.dataset.gone = '1';
+                const idx = groundApples.indexOf(apple);
+                if (idx > -1) groundApples.splice(idx, 1);
+                apple.style.transition = 'opacity 1s ease';
+                apple.style.opacity = '0';
+                setTimeout(() => apple.remove(), 1000);
+            }
+        }, 22000);
+    }
+
+    /* --- Geiter --- */
+    const goats = [];
+    const goatCount = window.innerWidth < 700 ? 4 : 6;
+
+    for (let i = 0; i < goatCount; i++) {
+        const goat = document.createElement('div');
+        goat.className = 'goat';
+        goat.textContent = '🐐';
+        goat.style.left = (8 + i * (72 / goatCount) + Math.random() * 6) + '%';
+        goat.style.bottom = (14 + Math.random() * 38) + '%';
+        goat.dataset.name = goatNames[i % goatNames.length];
+        goat.title = goatNames[i % goatNames.length];
+        goat.style.setProperty('--flip', 'scaleX(1)');
+
+        goat.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goat.classList.remove('jumping');
+            void goat.offsetWidth;
+            goat.classList.add('jumping');
+
+            const line = goatLines[Math.floor(Math.random() * goatLines.length)];
+            const text = Math.random() > 0.65 ? goat.dataset.name + ': ' + line : line;
+            const r = goat.getBoundingClientRect();
+            const p = pasture.getBoundingClientRect();
+            bubbleAt(r.left - p.left + r.width / 2, p.bottom - r.top + 6, text);
+
+            setTimeout(() => goat.classList.remove('jumping'), 500);
+        });
+
+        pasture.appendChild(goat);
+        goats.push(goat);
+    }
+
+    function driftGoats() {
+        if (document.hidden) return;
+        goats.forEach(goat => {
+            if (Math.random() > 0.55) return;
+            const x = parseFloat(goat.style.left);
+            const nx = Math.max(4, Math.min(88, x + (Math.random() - 0.5) * 7));
+            goat.style.setProperty('--flip', nx > x ? 'scaleX(1)' : 'scaleX(-1)');
+            goat.style.transform = nx > x ? 'scaleX(1)' : 'scaleX(-1)';
+            goat.style.left = nx + '%';
+        });
+    }
+
+    /* Geitene stjeler av og til et eple fra bakken */
+    function goatStealsApple() {
+        if (document.hidden || groundApples.length === 0) return;
+        if (Math.random() > 0.45) return;
+
+        const apple = groundApples[Math.floor(Math.random() * groundApples.length)];
+        const goat = goats[Math.floor(Math.random() * goats.length)];
+        if (!apple || apple.dataset.gone) return;
+
+        apple.dataset.gone = '1';
+        const idx = groundApples.indexOf(apple);
+        if (idx > -1) groundApples.splice(idx, 1);
+        apple.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        apple.style.opacity = '0';
+        apple.style.transform = 'scale(0.3)';
+        setTimeout(() => apple.remove(), 420);
+
+        const r = goat.getBoundingClientRect();
+        const p = pasture.getBoundingClientRect();
+        bubbleAt(r.left - p.left + r.width / 2, p.bottom - r.top + 6,
+            stealLines[Math.floor(Math.random() * stealLines.length)]);
+    }
+
+    /* --- Gress reagerer på musepekeren --- */
+    if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
+        const blades = pasture.querySelectorAll('.grass-blade');
+        pasture.addEventListener('mousemove', (e) => {
+            const rect = pasture.getBoundingClientRect();
+            const mouseX = (e.clientX - rect.left) / rect.width;
+            blades.forEach(blade => {
+                const bx = parseFloat(blade.style.left) / 100;
+                blade.style.transform = 'rotate(' + ((mouseX - bx) * 20) + 'deg)';
+                blade.style.transition = 'transform 0.5s ease';
+            });
+        }, { passive: true });
+    }
+
+    setInterval(spawnApple, 4200);
+    setInterval(driftGoats, 3400);
+    setInterval(goatStealsApple, 9000);
+    setTimeout(spawnApple, 1400);
+    setTimeout(() => harvest.classList.add('show'), 2600);
+
+    /* --- BOBLER I CIDER-SEKSJONEN --- */
+    const ciderSection = document.getElementById('cideren');
+    if (!reducedMotion) {
+        for (let i = 0; i < 14; i++) {
+            const b = document.createElement('div');
+            b.className = 'bubble';
+            const size = 6 + Math.random() * 22;
+            b.style.width = size + 'px';
+            b.style.height = size + 'px';
+            b.style.left = Math.random() * 100 + '%';
+            b.style.animationDuration = (10 + Math.random() * 14) + 's';
+            b.style.animationDelay = (Math.random() * 12) + 's';
+            b.style.setProperty('--drift', (-40 + Math.random() * 80) + 'px');
+            ciderSection.appendChild(b);
+        }
+    }
+
+    /* --- BESTILLINGSSKJEMA --- */
+    const form = document.getElementById('orderForm');
+    const btn = document.getElementById('orderBtn');
+    const status = document.getElementById('orderStatus');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.className = 'order-status';
+        status.textContent = '';
+
+        const navn = form.navn.value.trim();
+        const telefon = form.telefon.value.trim();
+        const antall = parseInt(form.antall.value, 10);
+
+        if (navn.length < 2) return visFeil('Skriv inn navnet ditt.', form.navn);
+        if (!/^[+\d][\d\s]{6,}$/.test(telefon)) return visFeil('Skriv inn et gyldig telefonnummer.', form.telefon);
+        if (!Number.isInteger(antall) || antall < 1 || antall > 60) return visFeil('Velg mellom 1 og 60 flasker.', form.antall);
+
+        btn.disabled = true;
+        btn.textContent = 'Sender …';
+
+        try {
+            const r = await fetch('/api/bestill', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    navn: navn,
+                    telefon: telefon,
+                    variant: form.variant.value,
+                    antall: antall,
+                    kommentar: form.kommentar.value.trim(),
+                    nettsted: form.nettsted.value
+                })
+            });
+            const svar = await r.json();
+
+            if (r.ok && svar.ok) {
+                status.textContent = 'Bestillingen er sendt. Vi tar kontakt på telefon for å avtale henting.';
+                status.classList.add('ok');
+                form.reset();
+            } else {
+                status.textContent = svar.feil || 'Bestillingen ble ikke sendt. Prøv igjen, eller ring oss.';
+                status.classList.add('feil');
+            }
+        } catch (err) {
+            status.textContent = 'Fikk ikke kontakt med serveren. Sjekk nettforbindelsen, eller ring oss.';
+            status.classList.add('feil');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Send bestilling';
+        }
+    });
+
+    function visFeil(melding, felt) {
+        status.textContent = melding;
+        status.classList.add('feil');
+        if (felt) felt.focus();
+    }
+})();
+</script>
+
+</body>
+</html>
