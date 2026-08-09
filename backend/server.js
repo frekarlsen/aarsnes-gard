@@ -2,14 +2,19 @@
 // Ingen npm-avhengigheter. Krever Node 18+ (bruker innebygd fetch).
 //
 // Miljøvariabler:
-//   NTFY_URL    (påkrevd)  full URL til ntfy-topic, f.eks. http://10.0.0.5:8080/aarsnesgard
+//   NTFY_URL    (påkrevd)  full URL til ntfy-topic, f.eks. https://ntfy.sh/aarsnesgard-bestilling
 //   NTFY_TOKEN  (valgfri)  Bearer-token hvis ntfy krever autentisering
+//   NTFY_EMAIL  (valgfri)  e-postadresse(r) som skal varsles, komma-separert
 //   PORT        (valgfri)  standard 3000
 
 const http = require('http');
 
 const NTFY_URL = process.env.NTFY_URL;
 const NTFY_TOKEN = process.env.NTFY_TOKEN || '';
+const NTFY_EMAIL = (process.env.NTFY_EMAIL || '')
+  .split(',')
+  .map((e) => e.trim())
+  .filter(Boolean);
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
 if (!NTFY_URL) {
@@ -76,14 +81,18 @@ const server = http.createServer((req, res) => {
   let overflow = false;
 
   req.on('data', (chunk) => {
+    if (overflow) return;
     raw += chunk;
     if (raw.length > 10000) {
       overflow = true;
+      json(res, 413, { feil: 'Forespørselen er for stor.' });
       req.destroy();
     }
   });
 
-  req.on('close', async () => {
+  // Merk: 'end' — ikke 'close'. Traefik holder forbindelsen åpen med
+  // keep-alive, så 'close' fyrer ikke når kroppen er ferdig lest.
+  req.on('end', async () => {
     if (overflow || res.writableEnded) return;
 
     let data;
@@ -122,17 +131,35 @@ const server = http.createServer((req, res) => {
       kommentar ? `Kommentar: ${kommentar}` : null
     ].filter(Boolean).join('\n');
 
-    try {
-      const headers = {
-        'Title': `Ny ciderbestilling: ${antall} x ${variant}`,
-        'Priority': 'high',
-        'Tags': 'apple',
-        'Content-Type': 'text/plain; charset=utf-8'
-      };
-      if (NTFY_TOKEN) headers.Authorization = `Bearer ${NTFY_TOKEN}`;
+    const basisHeaders = {
+      'Title': `Ny ciderbestilling: ${antall} x ${variant}`,
+      'Priority': 'high',
+      'Tags': 'apple',
+      'Content-Type': 'text/plain; charset=utf-8'
+    };
+    if (NTFY_TOKEN) basisHeaders.Authorization = `Bearer ${NTFY_TOKEN}`;
 
-      const r = await fetch(NTFY_URL, { method: 'POST', headers, body: melding });
-      if (!r.ok) throw new Error(`ntfy svarte ${r.status}`);
+    // ntfy tar én e-postadresse per melding. Med flere mottakere sendes
+    // meldingen én gang per adresse. Kopi nr. 2 og utover får laveste
+    // prioritet, så telefonen ikke piper flere ganger for samme bestilling.
+    const mottakere = NTFY_EMAIL.length ? NTFY_EMAIL : [null];
+
+    try {
+      for (let i = 0; i < mottakere.length; i++) {
+        const headers = { ...basisHeaders };
+        if (mottakere[i]) headers.Email = mottakere[i];
+        if (i > 0) headers.Priority = 'min';
+
+        const r = await fetch(NTFY_URL, { method: 'POST', headers, body: melding });
+
+        if (i === 0) {
+          // Første kall bærer push-varselet. Feiler det, feiler bestillingen.
+          if (!r.ok) throw new Error(`ntfy svarte ${r.status}`);
+        } else if (!r.ok) {
+          // Bestillingen er allerede levert — logg og gå videre.
+          console.error(`Klarte ikke sende e-post til ${mottakere[i]}: ntfy svarte ${r.status}`);
+        }
+      }
 
       registrerTreff(ip);
       console.log(`[${new Date().toISOString()}] Bestilling fra ${ip}: ${antall} x ${variant} (${navn})`);
