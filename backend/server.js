@@ -60,6 +60,24 @@ function clean(s, max) {
   return String(s ?? '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, max);
 }
 
+// HTTP-headere er ikke UTF-8-trygge, og varselet blir lettere a lese naar
+// alt er ren ASCII. Norske tegn skrives om, aksenter fjernes, og resten
+// av tegnene utenfor ASCII (emoji o.l.) strippes bort. Linjeskift bevares.
+function tilAscii(s) {
+  return String(s)
+    .replace(/æ/g, 'ae').replace(/Æ/g, 'Ae')
+    .replace(/ø/g, 'oe').replace(/Ø/g, 'Oe')
+    .replace(/å/g, 'aa').replace(/Å/g, 'Aa')
+    .replace(/[–—]/g, '-')
+    .replace(/[“”«»]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .replace(/…/g, '...')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\x20-\x7E\n]/g, '')
+    .replace(/[ \t]{2,}/g, ' ')
+    .trim();
+}
+
 // Må stemme med <select> i index.html
 const VARIANTER = ['Tørr', 'Halvtørr', 'Søt'];
 
@@ -123,19 +141,20 @@ const server = http.createServer((req, res) => {
     if (!VARIANTER.includes(variant)) return json(res, 400, { feil: 'Velg en variant.' });
     if (!Number.isInteger(antall) || antall < 1 || antall > 60) return json(res, 400, { feil: 'Velg mellom 1 og 60 flasker.' });
 
-    const melding = [
+    // Varselet sendes som ren ASCII — se tilAscii() over.
+    const melding = tilAscii([
       `Navn: ${navn}`,
       `Telefon: ${telefon}`,
       `Variant: ${variant}`,
       `Antall flasker: ${antall}`,
       kommentar ? `Kommentar: ${kommentar}` : null
-    ].filter(Boolean).join('\n');
+    ].filter(Boolean).join('\n'));
 
     const basisHeaders = {
-      'Title': `Ny ciderbestilling: ${antall} x ${variant}`,
+      'Title': tilAscii(`Ny ciderbestilling: ${antall} x ${variant}`),
       'Priority': 'high',
       'Tags': 'apple',
-      'Content-Type': 'text/plain; charset=utf-8'
+      'Content-Type': 'text/plain'
     };
     if (NTFY_TOKEN) basisHeaders.Authorization = `Bearer ${NTFY_TOKEN}`;
 
