@@ -1,32 +1,19 @@
 services:
   web:
     build: .
+    image: aarsnesgard-web
+    container_name: aarsnesgard-web
     restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      # Midlertidig testadresse beholdes til aarsnesgard.no er oppe.
-      # Kan fjernes fra listen når domenet er i drift.
-      - traefik.http.routers.aarsnesgard.rule=Host(`aarsnesgard.no`) || Host(`www.aarsnesgard.no`) || Host(`aarsnesgard.frekarlsen.com`)
-      - traefik.http.routers.aarsnesgard.priority=10
-      - traefik.http.services.aarsnesgard.loadbalancer.server.port=80
-      # www -> uten www
-      - traefik.http.routers.aarsnesgard.middlewares=aarsnesgard-www
-      - traefik.http.middlewares.aarsnesgard-www.redirectregex.regex=^https?://www\.aarsnesgard\.no/(.*)
-      - traefik.http.middlewares.aarsnesgard-www.redirectregex.replacement=https://aarsnesgard.no/$${1}
-      - traefik.http.middlewares.aarsnesgard-www.redirectregex.permanent=true
     networks: [edge]
 
   api:
     build: ./backend
+    image: aarsnesgard-api
+    container_name: aarsnesgard-api
     restart: unless-stopped
     environment:
-      - NTFY_URL=${NTFY_URL}
+      - NTFY_URL=${NTFY_URL:-}
       - NTFY_TOKEN=${NTFY_TOKEN:-}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.aarsnesgard-api.rule=(Host(`aarsnesgard.no`) || Host(`www.aarsnesgard.no`) || Host(`aarsnesgard.frekarlsen.com`)) && PathPrefix(`/api`)
-      - traefik.http.routers.aarsnesgard-api.priority=20
-      - traefik.http.services.aarsnesgard-api.loadbalancer.server.port=3000
     networks: [edge]
 
 networks:
