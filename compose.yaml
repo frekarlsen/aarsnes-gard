@@ -6,16 +6,6 @@ services:
     restart: unless-stopped
     networks: [edge]
 
-  api:
-    build: ./backend
-    image: aarsnesgard-api
-    container_name: aarsnesgard-api
-    restart: unless-stopped
-    environment:
-      - NTFY_URL=${NTFY_URL:-}
-      - NTFY_TOKEN=${NTFY_TOKEN:-}
-    networks: [edge]
-
 networks:
   edge:
     external: true
